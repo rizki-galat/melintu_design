@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Melintu Desain'),
+        title: const Text('Melintu Design'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
