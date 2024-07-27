@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'database_helper.dart';
 import 'user_model.dart';
@@ -19,19 +18,11 @@ class LoginPage extends StatefulWidget {
 
   @override
   State<LoginPage> createState() => _LoginPageState();
-  // @override
-  // Widget build(BuildContext context){
-  //   return Image.asset('assimages/1.png');
-  // }
 }
 
-// class MyLogoWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context){
-//     return Image.asset('assets/images/1.png');
-//   }
-// }
 class _LoginPageState extends State<LoginPage> {
+  bool _obscureText = true; // Tambahkan variabel ini
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +36,8 @@ class _LoginPageState extends State<LoginPage> {
             end: Alignment.bottomCenter,
             colors: [
               Color(0xFFE0F7FA),
-              Color(0xFF2962FF)
-            ], // Warna gradien biru
+              Color(0xFF2962FF),
+            ],
           ),
         ),
         child: Center(
@@ -75,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
                   controller: _passwordController,
-                  obscureText: true,
+                  obscureText: _obscureText, // Gunakan variabel ini
                   decoration: InputDecoration(
                     hintText: 'Password',
                     filled: true,
@@ -83,6 +74,16 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide.none,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText; // Ubah nilai obscureText
+                        });
+                      },
                     ),
                   ),
                 ),
